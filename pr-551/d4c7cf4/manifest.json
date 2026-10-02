@@ -1,0 +1,59 @@
+{
+  "summary": "这个 diff 把用量页与快捷面板的用量读取改成串行：同一时刻只发一个请求，读取期间到来的刷新或改选合并成一次后续读取，手动刷新的强制意图保留；同时让路由页在离开视野或文档隐藏时不再排帧、结束正在播放的重放，重新可见时再恢复。界面元素没有新增或改动，变化体现在刷新时序与路由动画是否继续。",
+  "scenes": [
+    {
+      "title": "路由页离开视野后停止重放",
+      "shots": [
+        {
+          "file": "01-routing-replay-running.png",
+          "caption": "重放进行中的路由页",
+          "width": 2560
+        },
+        {
+          "file": "02-routing-after-return.png",
+          "caption": "切回后的路由页",
+          "width": 2560
+        }
+      ]
+    },
+    {
+      "title": "用量页的手动刷新与改选周期",
+      "shots": [
+        {
+          "file": "03-usage-before.png",
+          "caption": "用量「概览」页：刷新按钮与周期选择",
+          "width": 2560
+        },
+        {
+          "file": "04-usage-after-refresh-and-pick.png",
+          "caption": "手动刷新并改选 7 天之后的用量「概览」",
+          "width": 2560
+        }
+      ]
+    },
+    {
+      "title": "快捷面板「用量」标签的周期切换",
+      "shots": [
+        {
+          "file": "05-panel-usage-today.png",
+          "caption": "快捷面板「用量」标签，默认的今天",
+          "width": 2560
+        },
+        {
+          "file": "06-panel-usage-7d.png",
+          "caption": "改选 7 天后的面板用量",
+          "width": 2560
+        }
+      ]
+    }
+  ],
+  "video": "preview.mp4",
+  "poster": "poster.png",
+  "errors": [],
+  "leak": false,
+  "skipped": null,
+  "mismatch": "",
+  "unseen": "「同时只有一个请求在飞、期间的刷新被合并」只有在响应很慢、刷新互相重叠时才看得出来；沙盒里 DeepSeek 的用量接口很快返回，录屏看不到第二个请求被排队或合并（测试用假 API 与时钟验证）。文档隐藏（切到别的应用或标签）时浏览器会挂起页面，无法截图，只能演示「切换到别的视图」这一种隐藏方式。重放是否真的停止排帧也只能从画面间接判断。",
+  "interactive": true,
+  "pages": 5
+}
